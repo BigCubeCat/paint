@@ -19,6 +19,11 @@
   <property name="windowTitle">
    <string>ICG Paint</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/assets/assets/icons/icon.png</normalon>
+   </iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
