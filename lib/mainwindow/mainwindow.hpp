@@ -2,7 +2,8 @@
 
 #include <QMainWindow>
 
-#include "../lib/canvas/canvas.hpp"
+#include "../canvas/canvas.hpp"
+#include "../color_picker_panel/colorpicker.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,4 +22,5 @@ class MainWindow : public QMainWindow {
     Ui::MainWindow* m_ui;
 
     Canvas m_canvas;
+    ColorPicker m_colorpicker;
 };

@@ -3,24 +3,27 @@ project(icg_paint LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
+# Добавляем исполняемый файл без файлов mainwindow
 qt_add_executable(icg_paint
     WIN32 MACOSX_BUNDLE
     main.cpp
-    mainwindow/mainwindow.cpp
-    mainwindow/mainwindow.hpp
-    mainwindow/mainwindow.ui
+    # Убираем файлы mainwindow/*.*
 )
 
+# Линкуем с библиотеками, включая библиотеку mainwindow
 target_link_libraries(icg_paint
     PRIVATE
         Qt::Core
         Qt::Widgets
+        mainwindow
         canvas
+        colorpicker
+    PUBLIC
+        common_lib
 )
 
 include(GNUInstallDirs)
@@ -38,7 +41,9 @@ qt_generate_deploy_app_script(
 )
 install(SCRIPT ${deploy_script})
 
-
 add_subdirectory(lib/canvas)
 add_subdirectory(lib/common)
+add_subdirectory(lib/color_picker_panel)
+add_subdirectory(lib/mainwindow)
+
 
