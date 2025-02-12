@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     m_ui->scrollArea->setWidget(&m_canvas);
 
-    m_ui->toolBar->addAction(m_ui->actionOpen);
+    m_ui->toolBar->addActions(m_ui->menuFile->actions());
+    m_ui->toolBar->addSeparator();
+    m_ui->toolBar->addSeparator();
     m_ui->toolBar->addWidget(&m_colorpicker);
 }
 

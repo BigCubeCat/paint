@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="assets">
+    <!-- Укажите путь к файлам относительно расположения .qrc файла -->
+    <file>assets/icons/open.png</file>
+    <file>assets/icons/save.png</file>
+    <file>assets/icons/save_as.png</file>
+  </qresource>
+</RCC>
+

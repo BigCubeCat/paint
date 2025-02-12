@@ -5,6 +5,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
+qt6_add_resources(RESOURCES resources.qrc)
+
 qt_standard_project_setup()
 
 # Добавляем исполняемый файл без файлов mainwindow
@@ -12,7 +14,9 @@ qt_add_executable(icg_paint
     WIN32 MACOSX_BUNDLE
     main.cpp
     # Убираем файлы mainwindow/*.*
+    ${RESOURCES}
 )
+
 
 # Линкуем с библиотеками, включая библиотеку mainwindow
 target_link_libraries(icg_paint

@@ -49,7 +49,10 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFilw">
+   <widget class="QMenu" name="menuFile">
+    <property name="toolTip">
+     <string/>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
@@ -60,7 +63,7 @@
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>Tool</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -68,7 +71,7 @@
      <string>Help</string>
     </property>
    </widget>
-   <addaction name="menuFilw"/>
+   <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -85,14 +88,27 @@
    </attribute>
   </widget>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/open.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open image file</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/save.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -101,6 +117,11 @@
    </property>
   </action>
   <action name="actionSave_As">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/save_as.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Save As</string>
    </property>
@@ -109,6 +130,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
