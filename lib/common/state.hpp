@@ -21,6 +21,9 @@ class StateSingleton {
 
    public:
     StateSingleton(const StateSingleton&) = delete;
+    StateSingleton& operator=(const StateSingleton&) = delete;
+
     static StateSingleton& instance();
     void setColor(const QColor& color);
+    QColor color() const;
 };

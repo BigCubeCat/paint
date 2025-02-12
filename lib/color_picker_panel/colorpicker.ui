@@ -6,25 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
+    <width>246</width>
     <height>50</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>50</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>320</width>
+    <width>0</width>
     <height>50</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>354</width>
+    <width>260</width>
     <height>50</height>
    </size>
   </property>
@@ -36,20 +36,20 @@
     <widget class="QPushButton" name="btnBlack">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
+       <horstretch>20</horstretch>
+       <verstretch>20</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -61,20 +61,20 @@
     <widget class="QPushButton" name="btnRed">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
+       <horstretch>20</horstretch>
+       <verstretch>20</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -92,14 +92,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -117,14 +117,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -142,14 +142,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -167,14 +167,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -192,14 +192,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -217,14 +217,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">
@@ -236,20 +236,20 @@
     <widget class="QPushButton" name="btnCustom">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>48</horstretch>
-       <verstretch>48</verstretch>
+       <horstretch>20</horstretch>
+       <verstretch>20</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
      <property name="text">

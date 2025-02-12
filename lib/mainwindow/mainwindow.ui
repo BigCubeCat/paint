@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>597</height>
+    <height>583</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>ICG Paint</string>
@@ -26,7 +32,7 @@
          <x>0</x>
          <y>0</y>
          <width>780</width>
-         <height>508</height>
+         <height>494</height>
         </rect>
        </property>
       </widget>
