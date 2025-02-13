@@ -7,11 +7,11 @@
 */
 class ITool {
    public:
-    /// Стандартное применение без аргументов
-    virtual void apply() = 0;
+    virtual void onMouseDown(int row, int col) = 0;
 
-    // Применить инстурмент к указанному пикселю
-    virtual void apply(int row, int col) = 0;
+    virtual void onMouseMove(int row, int col) = 0;
+
+    virtual void onMouseUp(int row, int col) = 0;
 
     virtual void setColor(const QColor& color) = 0;
 };

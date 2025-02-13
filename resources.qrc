@@ -1,5 +1,14 @@
 <RCC>
   <qresource prefix="assets">
+    <file>assets/icons/fill.png</file>
+    <file>assets/icons/shape.png</file>
+    <file>assets/icons/line.png</file>
+    <file>assets/icons/docs.png</file>
+    <file>assets/icons/about.png</file>
+    <file>assets/icons/icon.png</file>
+    <file>assets/icons/open.png</file>
+    <file>assets/icons/save_as.png</file>
+    <file>assets/icons/save.png</file>
     <file>assets/icons/open.png</file>
     <file>assets/icons/icon.png</file>
     <file>assets/icons/save.png</file>

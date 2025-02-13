@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     m_ui->toolBar->addActions(m_ui->menuFile->actions());
     m_ui->toolBar->addSeparator();
+    m_ui->toolBar->addActions(m_ui->menuTools->actions());
     m_ui->toolBar->addSeparator();
     m_ui->toolBar->addWidget(&m_colorpicker);
 }

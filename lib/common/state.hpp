@@ -19,6 +19,9 @@ class StateSingleton {
     std::shared_ptr<ITool> m_current_tool;
     QColor m_current_color;
 
+    int m_width;
+    int m_height;
+
    public:
     StateSingleton(const StateSingleton&) = delete;
     StateSingleton& operator=(const StateSingleton&) = delete;
@@ -26,4 +29,8 @@ class StateSingleton {
     static StateSingleton& instance();
     void setColor(const QColor& color);
     QColor color() const;
+
+    void setGeometry(int w, int h);
+    int width() const;
+    int height() const;
 };

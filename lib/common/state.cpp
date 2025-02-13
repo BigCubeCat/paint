@@ -15,3 +15,16 @@ void StateSingleton::setColor(const QColor& color) {
 QColor StateSingleton::color() const {
     return m_current_color;
 }
+
+int StateSingleton::width() const {
+    return m_width;
+}
+
+int StateSingleton::height() const {
+    return m_height;
+}
+
+void StateSingleton::setGeometry(int w, int h) {
+    m_width = w;
+    m_height = h;
+}

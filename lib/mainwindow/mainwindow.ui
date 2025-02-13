@@ -61,23 +61,28 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
     <addaction name="separator"/>
+    <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
    </widget>
-   <widget class="QMenu" name="menuView">
+   <widget class="QMenu" name="menuTools">
     <property name="title">
      <string>Tool</string>
     </property>
+    <addaction name="actionLine"/>
+    <addaction name="actionFill"/>
+    <addaction name="actionStamp"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionHelp"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuView"/>
+   <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -117,6 +122,9 @@
    <property name="text">
     <string>Save</string>
    </property>
+   <property name="toolTip">
+    <string>Save image file</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
@@ -130,8 +138,85 @@
    <property name="text">
     <string>Save As</string>
    </property>
+   <property name="toolTip">
+    <string>Save image file with other file name</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionLine">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/line.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Line</string>
+   </property>
+   <property name="toolTip">
+    <string>Draw line</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionFill">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/fill.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Fill</string>
+   </property>
+   <property name="toolTip">
+    <string>Fill some area</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionStamp">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/shape.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Stamp</string>
+   </property>
+   <property name="toolTip">
+    <string>Stamp figure</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/about.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>About author</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset>
+     <normalon>:/assets/assets/icons/docs.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+   <property name="toolTip">
+    <string>Documentation</string>
    </property>
   </action>
  </widget>
