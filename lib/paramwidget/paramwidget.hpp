@@ -4,6 +4,7 @@
 
 #include "../common/e_tool.hpp"
 #include "../lineconfig/lineconfig.hpp"
+#include "../stampconfig/stampconfig.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,6 +23,7 @@ class ParamWidget : public QWidget {
     QWidget* m_widget_ptr;
     LineConfig m_line;
     QWidget m_fill;  // заливка не требует доп настроек
+    StampConfig m_stamp;
 
    public slots:
     void setTool(e_tool tool);

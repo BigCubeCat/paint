@@ -14,6 +14,11 @@ QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
+   private slots:
+
+    void useLine();
+    void useFill();
+    void useStamp();
 
    public:
     explicit MainWindow(QWidget* parent = nullptr);
