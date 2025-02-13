@@ -14,4 +14,8 @@ class Line : public ITool {
     void onMouseMove(int row, int col) override;
 
     void onMouseUp(int row, int col) override;
+
+    void setColor(const QColor& color) override {}
+
+    void setWidth(int width) override;
 };

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(PROJECT_NAME common_lib)
+set(PROJECT_NAME tools_lib)
 
 project(${PROJECT_NAME} LANGUAGES CXX)
 

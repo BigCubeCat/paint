@@ -26,6 +26,9 @@ target_link_libraries(icg_paint
         mainwindow
         canvas
         colorpicker
+        lineconfig
+        paramwidget
+        stampconfig
     PUBLIC
         common_lib
 )
@@ -49,5 +52,9 @@ add_subdirectory(lib/canvas)
 add_subdirectory(lib/common)
 add_subdirectory(lib/color_picker_panel)
 add_subdirectory(lib/mainwindow)
+add_subdirectory(lib/tools)
+add_subdirectory(lib/lineconfig)
+add_subdirectory(lib/paramwidget)
+add_subdirectory(lib/stampconfig)
 
 

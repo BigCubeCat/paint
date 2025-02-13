@@ -4,6 +4,7 @@
 
 #include "../canvas/canvas.hpp"
 #include "../color_picker_panel/colorpicker.hpp"
+#include "../paramwidget/paramwidget.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,4 +24,5 @@ class MainWindow : public QMainWindow {
 
     Canvas m_canvas;
     ColorPicker m_colorpicker;
+    ParamWidget m_param_widget;
 };

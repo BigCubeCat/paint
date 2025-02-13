@@ -16,7 +16,8 @@ void Canvas::paintEvent([[maybe_unused]] QPaintEvent* event) {
     painter.drawPixmap(0, 0, m_pixmap);
 
     if (m_drawing) {
-        QPen pen(Qt::gray, 1, Qt::DashLine);
+        auto& state = StateSingleton::instance();
+        QPen pen(state.color(), state.toolWidth(), Qt::DashLine);
         painter.setPen(pen);
         // TODO(bigcubecat): реализовать алгоритм
         painter.drawLine(m_startPoint, m_currentPoint);
@@ -46,7 +47,9 @@ void Canvas::mouseReleaseEvent(QMouseEvent* event) {
     if (event->button() == Qt::LeftButton && m_drawing) {
         m_drawing = false;
         QPainter painter(&m_pixmap);
-        QPen pen(Qt::black, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+        auto& state = StateSingleton::instance();
+        QPen pen(state.color(), state.toolWidth(), Qt::SolidLine, Qt::RoundCap,
+                 Qt::RoundJoin);
         painter.setPen(pen);
         painter.drawLine(m_startPoint, event->pos());
         update();

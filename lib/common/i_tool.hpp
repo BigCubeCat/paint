@@ -14,4 +14,6 @@ class ITool {
     virtual void onMouseUp(int row, int col) = 0;
 
     virtual void setColor(const QColor& color) = 0;
+
+    virtual void setWidth(int width) = 0;
 };
