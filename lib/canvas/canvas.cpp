@@ -1,16 +1,19 @@
 #include "canvas.hpp"
+
+#include <QFileDialog>
+#include <QMessageBox>
 #include <QWidget>
+#include <utility>
 
 #include "../common/state.hpp"
 
-Canvas::Canvas(QWidget* parent)
-    : QWidget(parent), m_pixmap(QPixmap(1000, 500)) {
+Canvas::Canvas(QWidget* parent) : QWidget(parent), m_pixmap(QPixmap(600, 400)) {
     m_pixmap.fill(Qt::white);
+    setFixedSize(m_pixmap.size());
 }
 
 void Canvas::paintEvent([[maybe_unused]] QPaintEvent* event) {
     auto& state = StateSingleton::instance();
-    this->resize(state.width(), state.height());
 
     QPainter painter(this);
     painter.drawPixmap(0, 0, m_pixmap);
@@ -54,4 +57,16 @@ void Canvas::mouseReleaseEvent(QMouseEvent* event) {
         painter.drawLine(m_startPoint, event->pos());
         update();
     }
+}
+
+QPixmap Canvas::pixmap() {
+    return m_pixmap;
+}
+
+void Canvas::setPixmap(QPixmap pixmap) {
+    auto& state = StateSingleton::instance();
+    m_pixmap = std::move(pixmap);
+    state.setGeometry(m_pixmap.width(), m_pixmap.height());
+    setFixedSize(m_pixmap.size());
+    update();
 }

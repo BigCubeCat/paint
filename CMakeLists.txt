@@ -29,6 +29,7 @@ target_link_libraries(icg_paint
         lineconfig
         paramwidget
         stampconfig
+        resizedialog
     PUBLIC
         common_lib
 )
@@ -56,5 +57,6 @@ add_subdirectory(lib/tools)
 add_subdirectory(lib/lineconfig)
 add_subdirectory(lib/paramwidget)
 add_subdirectory(lib/stampconfig)
+add_subdirectory(lib/resizedialog)
 
 

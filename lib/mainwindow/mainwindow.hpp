@@ -20,6 +20,12 @@ class MainWindow : public QMainWindow {
     void useFill();
     void useStamp();
 
+    void saveImage();
+    void saveImageAs();
+    void openImage();
+
+    void resizeCanvas();
+
    public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow() override;
@@ -30,4 +36,8 @@ class MainWindow : public QMainWindow {
     Canvas m_canvas;
     ColorPicker m_colorpicker;
     ParamWidget m_param_widget;
+
+    std::string m_filename;
+
+    void askFilename();
 };
