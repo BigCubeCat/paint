@@ -8,7 +8,7 @@
 #include "../common/state.hpp"
 
 Canvas::Canvas(QWidget* parent) : QWidget(parent), m_pixmap(QPixmap(600, 400)) {
-    m_pixmap.fill(Qt::white);
+    reset();
     setFixedSize(m_pixmap.size());
 }
 
@@ -69,4 +69,8 @@ void Canvas::setPixmap(QPixmap pixmap) {
     state.setGeometry(m_pixmap.width(), m_pixmap.height());
     setFixedSize(m_pixmap.size());
     update();
+}
+
+void Canvas::reset() {
+    m_pixmap.fill(Qt::white);
 }

@@ -36,4 +36,6 @@ class Canvas : public QWidget {
     void mouseReleaseEvent(QMouseEvent* event) override;
     // Отрисовка содержимого виджета (наш QPixmap)
     void paintEvent(QPaintEvent* event) override;
+   public slots:
+    void reset();
 };

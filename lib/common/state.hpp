@@ -20,8 +20,8 @@ class StateSingleton {
     std::shared_ptr<ITool> m_current_tool;
     QColor m_current_color;
 
-    int m_width;
-    int m_height;
+    int m_width = 600;
+    int m_height = 400;
 
     int m_tool_width;
 

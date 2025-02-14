@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(m_ui->actionResize, &QAction::triggered, this,
             &MainWindow::resizeCanvas);
+    connect(m_ui->actionResize, &QAction::triggered, &m_canvas, &Canvas::reset);
 }
 
 MainWindow::~MainWindow() {
