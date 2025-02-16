@@ -2,6 +2,8 @@
 #include <QRadioButton>
 #include <QSpinBox>
 
+#include "../common/state.hpp"
+
 #include "ui_polygondialog.h"
 
 PolygonDialog::PolygonDialog(QWidget* parent)
@@ -16,6 +18,13 @@ PolygonDialog::PolygonDialog(QWidget* parent)
             &PolygonDialog::radiusChanged);
     connect(m_ui->angleBox, &QSpinBox::valueChanged, this,
             &PolygonDialog::angleChanged);
+
+    auto& state = StateSingleton::instance();
+    auto config = state.polygonConfig();
+    m_ui->widthBox->setValue(config.width);
+    m_ui->radiusBox->setValue(config.radius);
+    m_ui->angleBox->setValue(config.angle);
+    m_ui->vertBox->setValue(config.n);
 }
 
 PolygonDialog::~PolygonDialog() {
@@ -39,5 +48,9 @@ void PolygonDialog::angleChanged(int a) {
 
 PolygonConfig PolygonDialog::config() {
     m_config.isStar = m_ui->star->isChecked();
+    m_config.n = m_ui->vertBox->value();
+    m_config.angle = m_ui->angleBox->value();
+    m_config.width = m_ui->widthBox->value();
+    m_config.radius = m_ui->radiusBox->value();
     return m_config;
 }

@@ -65,5 +65,7 @@ PolygonConfig StateSingleton::polygonConfig() {
 }
 
 void StateSingleton::setPolygonConfig(PolygonConfig config) {
-    m_poly_config = std::move(config);
+    m_poly_config = config;
+    qDebug() << config.isStar << " " << config.n << " " << config.radius << " "
+             << config.width << " " << config.angle;
 }

@@ -9,9 +9,10 @@ void Stamp::onMouseUp(QPixmap& canvas, [[maybe_unused]] QMouseEvent* event) {
         m_drawing = false;
         QPainter painter(&canvas);
         auto& state = StateSingleton::instance();
-        QPen pen(state.color(), state.toolWidth(), Qt::SolidLine);
+        auto config = state.polygonConfig();
+        QPen pen(state.color(), config.width, Qt::SolidLine);
         painter.setPen(pen);
-        star(&painter);
+        draw(&painter);
     }
 }
 
@@ -27,9 +28,20 @@ void Stamp::paintEvent([[maybe_unused]] QPixmap& canvas, QPainter* painter,
     if (!m_drawing)
         return;
     auto& state = StateSingleton::instance();
-    QPen pen(state.color(), state.toolWidth(), Qt::SolidLine);
+    auto config = state.polygonConfig();
+    QPen pen(state.color(), config.width, Qt::SolidLine);
     painter->setPen(pen);
-    star(painter);
+    draw(painter);
+}
+
+void Stamp::draw(QPainter* painter) {
+    auto& state = StateSingleton::instance();
+    auto config = state.polygonConfig();
+    if (config.isStar) {
+        star(painter);
+    } else {
+        polygon(painter);
+    }
 }
 
 void Stamp::polygon(QPainter* painter) {

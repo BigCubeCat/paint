@@ -8,6 +8,8 @@ class Stamp : public ITool {
     bool m_drawing = false;
     QPoint m_point;
 
+    void draw(QPainter* painter);
+
     void polygon(QPainter* painter);
 
     void star(QPainter* painter);
