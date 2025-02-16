@@ -15,10 +15,16 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 add_library(${PROJECT_NAME} STATIC
   i_tool.hpp
+  e_tool.hpp
   state.hpp
   state.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(${PROJECT_NAME} 
+PRIVATE
+  Qt${QT_VERSION_MAJOR}::Widgets
+PUBLIC
+  tools_lib
+)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE CANVAS_LIBRARY)

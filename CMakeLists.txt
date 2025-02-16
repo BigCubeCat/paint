@@ -32,6 +32,7 @@ target_link_libraries(icg_paint
         resizedialog
     PUBLIC
         common_lib
+        tools_lib
 )
 
 include(GNUInstallDirs)

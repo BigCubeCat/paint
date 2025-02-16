@@ -1,15 +1,17 @@
 #include "state.hpp"
 
+#include "../tools/line.hpp"
+
 StateSingleton& StateSingleton::instance() {
     static StateSingleton inst;
+    if (inst.tool() == nullptr) {
+        inst.selectTool(kToolLine);
+    }
     return inst;
 }
 
 void StateSingleton::setColor(const QColor& color) {
     m_current_color = color;
-    if (m_current_tool) {
-        m_current_tool->setColor(color);
-    }
 }
 
 QColor StateSingleton::color() const {
@@ -31,9 +33,6 @@ void StateSingleton::setGeometry(int w, int h) {
 
 void StateSingleton::setToolWidth(int width) {
     m_tool_width = width;
-    if (m_current_tool) {
-        m_current_tool->setWidth(width);
-    }
 }
 
 int StateSingleton::toolWidth() const {
@@ -42,6 +41,9 @@ int StateSingleton::toolWidth() const {
 
 void StateSingleton::selectTool(e_tool tool) {
     m_selected_tool = tool;
+    if (m_selected_tool == kToolLine) {
+        m_current_tool = std::make_shared<Line>();
+    }
 }
 
 e_tool StateSingleton::currentTool() const {
@@ -62,4 +64,8 @@ void StateSingleton::setCountVert(int n) {
 
 int StateSingleton::countVert() const {
     return m_count_vert;
+}
+
+ITool* StateSingleton::tool() {
+    return m_current_tool.get();
 }

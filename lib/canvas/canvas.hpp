@@ -8,12 +8,7 @@
 
 class Canvas : public QWidget {
    private:
-    bool m_drawing;
     QPixmap m_pixmap;
-    QPoint m_lastPoint;
-
-    QPoint m_startPoint;
-    QPoint m_currentPoint;
 
     std::string m_filename;
 

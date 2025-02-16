@@ -1,4 +1,5 @@
 #include "canvas.hpp"
+#include <qlogging.h>
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -18,43 +19,48 @@ void Canvas::paintEvent([[maybe_unused]] QPaintEvent* event) {
     QPainter painter(this);
     painter.drawPixmap(0, 0, m_pixmap);
 
-    if (m_drawing) {
-        auto& state = StateSingleton::instance();
-        QPen pen(state.color(), state.toolWidth(), Qt::DashLine);
-        painter.setPen(pen);
-        // TODO(bigcubecat): реализовать алгоритм
-        painter.drawLine(m_startPoint, m_currentPoint);
+    auto* tool = StateSingleton::instance().tool();
+    if (!tool) {
+        qDebug() << "Tool is nullptr!";
+        return;
     }
+    tool->paintEvent(m_pixmap, &painter, event);
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent* event) {
     if (!(event->buttons() & Qt::LeftButton)) {
         return;
     }
-    if (!m_drawing) {
+
+    auto* tool = StateSingleton::instance().tool();
+    if (!tool) {
+        qDebug() << "Tool is nullptr!";
         return;
     }
-    m_currentPoint = event->pos();
+    tool->onMouseMove(m_pixmap, event);
     update();
 }
 
 void Canvas::mousePressEvent(QMouseEvent* event) {
     if (event->button() == Qt::LeftButton) {
-        m_drawing = true;
-        m_startPoint = event->pos();
-        m_currentPoint = event->pos();
+        auto* tool = StateSingleton::instance().tool();
+        if (!tool) {
+            qDebug() << "Tool is nullptr!";
+            return;
+        }
+        tool->onMouseDown(m_pixmap, event);
+        update();
     }
 }
 
 void Canvas::mouseReleaseEvent(QMouseEvent* event) {
-    if (event->button() == Qt::LeftButton && m_drawing) {
-        m_drawing = false;
-        QPainter painter(&m_pixmap);
-        auto& state = StateSingleton::instance();
-        QPen pen(state.color(), state.toolWidth(), Qt::SolidLine, Qt::RoundCap,
-                 Qt::RoundJoin);
-        painter.setPen(pen);
-        painter.drawLine(m_startPoint, event->pos());
+    if (event->button() == Qt::LeftButton) {
+        auto* tool = StateSingleton::instance().tool();
+        if (!tool) {
+            qDebug() << "Tool is nullptr!";
+            return;
+        }
+        tool->onMouseUp(m_pixmap, event);
         update();
     }
 }

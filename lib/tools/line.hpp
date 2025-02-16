@@ -1,21 +1,21 @@
 #pragma once
 
+#include <qevent.h>
 #include "../common/i_tool.hpp"
 
 class Line : public ITool {
    private:
-    int m_width;
+    bool m_drawing = false;
+    QPoint m_start;
+    QPoint m_current;
 
    public:
-    explicit Line(int width);
+    void onMouseDown(QPixmap& canvas, QMouseEvent* event) override;
 
-    void onMouseDown(int row, int col) override;
+    void onMouseMove(QPixmap& canvas, QMouseEvent* event) override;
 
-    void onMouseMove(int row, int col) override;
+    void onMouseUp(QPixmap& canvas, QMouseEvent* event) override;
 
-    void onMouseUp(int row, int col) override;
-
-    void setColor(const QColor& color) override {}
-
-    void setWidth(int width) override;
+    void paintEvent(QPixmap& canvas, QPainter* painter,
+                    QPaintEvent* event) override;
 };

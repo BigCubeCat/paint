@@ -34,23 +34,40 @@ class StateSingleton {
     StateSingleton(const StateSingleton&) = delete;
     StateSingleton& operator=(const StateSingleton&) = delete;
 
+    /// вернуть сущность объекта
     static StateSingleton& instance();
+    /// установить цвет
     void setColor(const QColor& color);
+    /// текущий цвет
     QColor color() const;
 
+    /// установить геоментрию холста
     void setGeometry(int w, int h);
+    /// ширина холста
     int width() const;
+    /// высота холста
     int height() const;
 
+    /// установить ширину инструмента
     void setToolWidth(int width);
+    /// ширина инструмента
     int toolWidth() const;
 
+    /// установаить инструмент
     void selectTool(e_tool tool);
+    /// возращает тэг текущего инструмента
     e_tool currentTool() const;
 
+    /// установить радиус
     void setRadius(int r);
+    /// радиус из конфига
     int radius() const;
 
+    /// установить число вершин
     void setCountVert(int n);
+    /// число вершин из конфига
     int countVert() const;
+
+    /// Возращает указатель на текцщий инструмент
+    ITool* tool();
 };
