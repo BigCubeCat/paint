@@ -2,6 +2,7 @@
 
 #include "../tools/fill.hpp"
 #include "../tools/line.hpp"
+#include "../tools/stamp.hpp"
 
 StateSingleton& StateSingleton::instance() {
     static StateSingleton inst;
@@ -46,6 +47,8 @@ void StateSingleton::selectTool(e_tool tool) {
         m_current_tool = std::make_shared<Line>();
     } else if (m_selected_tool == kToolFill) {
         m_current_tool = std::make_shared<Fill>();
+    } else {
+        m_current_tool = std::make_shared<Stamp>();
     }
 }
 
@@ -53,22 +56,14 @@ e_tool StateSingleton::currentTool() const {
     return m_selected_tool;
 }
 
-void StateSingleton::setRadius(int r) {
-    m_radius = r;
-}
-
-int StateSingleton::radius() const {
-    return m_radius;
-}
-
-void StateSingleton::setCountVert(int n) {
-    m_count_vert = n;
-}
-
-int StateSingleton::countVert() const {
-    return m_count_vert;
-}
-
 ITool* StateSingleton::tool() {
     return m_current_tool.get();
+}
+
+PolygonConfig StateSingleton::polygonConfig() {
+    return m_poly_config;
+}
+
+void StateSingleton::setPolygonConfig(PolygonConfig config) {
+    m_poly_config = std::move(config);
 }

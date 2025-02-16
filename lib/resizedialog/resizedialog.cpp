@@ -8,10 +8,13 @@
 ResizeDialog::ResizeDialog(QWidget* parent)
     : QDialog(parent), m_ui(new Ui::ResizeDialog) {
     m_ui->setupUi(this);
-
     auto& state = StateSingleton::instance();
-    m_ui->widthBox->setValue(state.width());
-    m_ui->heightBox->setValue(state.height());
+
+    m_width = state.width();
+    m_height = state.height();
+
+    m_ui->widthBox->setValue(m_width);
+    m_ui->heightBox->setValue(m_height);
 
     connect(m_ui->widthBox, &QSpinBox::valueChanged, this,
             &ResizeDialog::widthChanged);

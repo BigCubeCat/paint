@@ -7,6 +7,7 @@
 #include <memory>
 #include "e_tool.hpp"
 #include "i_tool.hpp"
+#include "polygon_config.hpp"
 
 /*!
  * \brief хранит состояние
@@ -18,17 +19,15 @@ class StateSingleton {
     StateSingleton() = default;
 
     std::shared_ptr<ITool> m_current_tool;
-    QColor m_current_color;
+    QColor m_current_color = QColorConstants::Black;
 
     int m_width = 600;
     int m_height = 400;
 
-    int m_tool_width;
-
-    int m_count_vert;
-    int m_radius;
+    int m_tool_width = 1;
 
     e_tool m_selected_tool;
+    PolygonConfig m_poly_config;
 
    public:
     StateSingleton(const StateSingleton&) = delete;
@@ -58,15 +57,9 @@ class StateSingleton {
     /// возращает тэг текущего инструмента
     e_tool currentTool() const;
 
-    /// установить радиус
-    void setRadius(int r);
-    /// радиус из конфига
-    int radius() const;
+    PolygonConfig polygonConfig();
 
-    /// установить число вершин
-    void setCountVert(int n);
-    /// число вершин из конфига
-    int countVert() const;
+    void setPolygonConfig(PolygonConfig config);
 
     /// Возращает указатель на текцщий инструмент
     ITool* tool();

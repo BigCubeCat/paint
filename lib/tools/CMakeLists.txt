@@ -18,6 +18,8 @@ add_library(${PROJECT_NAME} STATIC
   line.cpp
   fill.hpp
   fill.cpp
+  stamp.hpp
+  stamp.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

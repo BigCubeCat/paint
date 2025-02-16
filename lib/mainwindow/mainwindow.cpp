@@ -3,11 +3,12 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QFormLayout>
 #include <QMessageBox>
 #include <QSpinBox>
-#include "QFormLayout"
 
 #include "../common/state.hpp"
+#include "../polygon/polygondialog.hpp"
 #include "../resizedialog/resizedialog.hpp"
 
 MainWindow::MainWindow(QWidget* parent)
@@ -70,8 +71,12 @@ void MainWindow::useFill() {
 
 void MainWindow::useStamp() {
     auto& state = StateSingleton::instance();
-    state.selectTool(kToolStamp);
-    m_param_widget.setTool(kToolStamp);
+    auto dialog = PolygonDialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        state.setPolygonConfig(dialog.config());
+        state.selectTool(kToolStamp);
+        m_param_widget.setTool(kToolStamp);
+    }
 }
 
 void MainWindow::askFilename() {

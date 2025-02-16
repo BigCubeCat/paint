@@ -11,7 +11,6 @@ PUBLIC
 PRIVATE
     common_lib
     lineconfig
-    stampconfig
 )
 
 target_include_directories(paramwidget PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

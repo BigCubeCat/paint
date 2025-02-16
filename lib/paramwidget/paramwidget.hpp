@@ -1,10 +1,10 @@
 #pragma once
 
+#include <qlabel.h>
 #include <QWidget>
 
 #include "../common/e_tool.hpp"
 #include "../lineconfig/lineconfig.hpp"
-#include "../stampconfig/stampconfig.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,9 +21,14 @@ class ParamWidget : public QWidget {
    private:
     Ui::ParamWidget* m_ui;
     QWidget* m_widget_ptr;
+
+    QIcon m_line_icon;
+    QIcon m_fill_icon;
+    QIcon m_poly_icon;
+
+    QLabel m_label;
     LineConfig m_line;
     QWidget m_fill;  // заливка не требует доп настроек
-    StampConfig m_stamp;
 
    public slots:
     void setTool(e_tool tool);
