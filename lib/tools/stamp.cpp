@@ -64,21 +64,30 @@ void Stamp::star(QPainter* painter) {
     auto& state = StateSingleton::instance();
     auto config = state.polygonConfig();
 
+    // Угол между соседними вершинами звезды (всего вершин 2*points)
     double angle_step = M_PI / config.n;
+    // Начинаем с вершины вверху (угол -90°)
+    double start_angle = config.angle * (M_PI / 180);
+
+    // Коэффициент для внутреннего радиуса.
+    double inner_ratio = 0.5;
     int outer_radius = config.radius;
-    int inner_radius = config.radius / 2;
+    int inner_radius = static_cast<int>(config.radius * inner_ratio);
 
     std::vector<QPoint> star_points;
+    // Вычисляем 2*points вершин: четные - внешние, нечетные - внутренние
     for (int i = 0; i < 2 * config.n; ++i) {
         int r = (i % 2 == 0) ? outer_radius : inner_radius;
-        double angle = i * angle_step;
-        star_points.emplace_back(m_point.x() + (r * cos(angle)),
-                                 m_point.y() + (r * sin(angle)));
+        double current_angle = start_angle + (i * angle_step);
+        QPoint pt(m_point.x() + (r * cos(current_angle)),
+                  m_point.y() + (r * sin(current_angle)));
+        star_points.push_back(pt);
     }
 
+    // Соединяем последовательно вершины, чтобы получилась звезда
     for (size_t i = 0; i < star_points.size(); ++i) {
         QPoint p1 = star_points[i];
-        QPoint p2 = star_points[(i + 2) % star_points.size()];
+        QPoint p2 = star_points[(i + 1) % star_points.size()];
         painter->drawLine(p1, p2);
     }
 }

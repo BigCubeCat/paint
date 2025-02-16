@@ -21,6 +21,8 @@ PolygonDialog::PolygonDialog(QWidget* parent)
 
     auto& state = StateSingleton::instance();
     auto config = state.polygonConfig();
+    m_ui->star->setChecked(config.isStar);
+    m_ui->poly->setChecked(!config.isStar);
     m_ui->widthBox->setValue(config.width);
     m_ui->radiusBox->setValue(config.radius);
     m_ui->angleBox->setValue(config.angle);
