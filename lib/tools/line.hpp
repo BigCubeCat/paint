@@ -9,6 +9,8 @@ class Line : public ITool {
     QPoint m_start;
     QPoint m_current;
 
+    void drawLineBresenham(QPainter* painter, int x1, int y1, int x2, int y2);
+
    public:
     void onMouseDown(QPixmap& canvas, QMouseEvent* event) override;
 
