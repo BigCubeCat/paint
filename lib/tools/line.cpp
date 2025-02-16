@@ -3,7 +3,7 @@
 
 #include "../common/state.hpp"
 
-void Line::onMouseUp(QPixmap& canvas, QMouseEvent* event) {
+void Line::onMouseUp(QPixmap& canvas, [[maybe_unused]] QMouseEvent* event) {
     if (m_drawing) {
         m_drawing = false;
         QPainter painter(&canvas);
@@ -15,20 +15,21 @@ void Line::onMouseUp(QPixmap& canvas, QMouseEvent* event) {
     }
 }
 
-void Line::onMouseMove(QPixmap& canvas, QMouseEvent* event) {
+void Line::onMouseMove([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     if (!m_drawing) {
         return;
     }
     m_current = event->pos();
 }
 
-void Line::onMouseDown(QPixmap& canvas, QMouseEvent* event) {
+void Line::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     m_drawing = true;
     m_start = event->pos();
     m_current = event->pos();
 }
 
-void Line::paintEvent(QPixmap& canvas, QPainter* painter, QPaintEvent* event) {
+void Line::paintEvent([[maybe_unused]] QPixmap& canvas, QPainter* painter,
+                      [[maybe_unused]] QPaintEvent* event) {
     if (m_drawing) {
         auto& state = StateSingleton::instance();
         QPen pen(state.color(), state.toolWidth(), Qt::DashLine);

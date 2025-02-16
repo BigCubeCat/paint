@@ -1,5 +1,6 @@
 #include "state.hpp"
 
+#include "../tools/fill.hpp"
 #include "../tools/line.hpp"
 
 StateSingleton& StateSingleton::instance() {
@@ -43,6 +44,8 @@ void StateSingleton::selectTool(e_tool tool) {
     m_selected_tool = tool;
     if (m_selected_tool == kToolLine) {
         m_current_tool = std::make_shared<Line>();
+    } else if (m_selected_tool == kToolFill) {
+        m_current_tool = std::make_shared<Fill>();
     }
 }
 

@@ -16,6 +16,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 add_library(${PROJECT_NAME} STATIC
   line.hpp
   line.cpp
+  fill.hpp
+  fill.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
