@@ -48,13 +48,15 @@ void Stamp::polygon(QPainter* painter) {
     auto& state = StateSingleton::instance();
     auto config = state.polygonConfig();
 
+    double start_angle = config.angle * (M_PI / 180);
     auto angle_step = 2 * M_PI / config.n;
-    QPoint prev_point(m_point.x() + (config.radius * cos(0)),
-                      m_point.y() + (config.radius * sin(0)));
+    QPoint prev_point(m_point.x() + (config.radius * cos(start_angle)),
+                      m_point.y() + (config.radius * sin(start_angle)));
 
     for (int i = 1; i <= config.n; ++i) {
-        QPoint new_point(m_point.x() + (config.radius * cos(i * angle_step)),
-                         m_point.y() + (config.radius * sin(i * angle_step)));
+        auto rotation = start_angle + (i * angle_step);
+        QPoint new_point(m_point.x() + (config.radius * cos(rotation)),
+                         m_point.y() + (config.radius * sin(rotation)));
         painter->drawLine(prev_point, new_point);
         prev_point = new_point;
     }
