@@ -80,3 +80,15 @@ void Canvas::setPixmap(QPixmap pixmap) {
 void Canvas::reset() {
     m_pixmap.fill(Qt::white);
 }
+
+void Canvas::resize(int width, int height) {
+    QPixmap new_pixmap(width, height);
+    new_pixmap.fill(Qt::white);
+    QPainter painter(&new_pixmap);
+
+    int orig_width = pixmap().width();
+    int orig_height = pixmap().height();
+
+    painter.drawPixmap(m_pixmap.rect(), m_pixmap);
+    setPixmap(new_pixmap);
+}

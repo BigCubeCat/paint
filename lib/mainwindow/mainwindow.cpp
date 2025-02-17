@@ -49,7 +49,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(m_ui->actionResize, &QAction::triggered, this,
             &MainWindow::resizeCanvas);
-    connect(m_ui->actionResize, &QAction::triggered, &m_canvas, &Canvas::reset);
+    connect(m_ui->actionReset, &QAction::triggered, &m_canvas, &Canvas::reset);
 }
 
 MainWindow::~MainWindow() {
@@ -127,15 +127,11 @@ void MainWindow::openImage() {
 }
 
 void MainWindow::resizeCanvas() {
+    qDebug() << "resize event";
     auto& state = StateSingleton::instance();
     auto rd = ResizeDialog(this);
     if (rd.exec() == QDialog::Accepted) {
         state.setGeometry(rd.width(), rd.height());
-        QPixmap old_pixmap = m_canvas.pixmap();
-        QPixmap new_pixmap(state.width(), state.height());
-        new_pixmap.fill(Qt::white);
-        QPainter painter(&new_pixmap);
-        painter.drawPixmap(0, 0, old_pixmap);
-        m_canvas.setPixmap(new_pixmap);
+        m_canvas.resize(state.width(), state.height());
     }
 }

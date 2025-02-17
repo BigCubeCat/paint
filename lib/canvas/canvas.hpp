@@ -21,6 +21,7 @@ class Canvas : public QWidget {
 
     QPixmap pixmap();
     void setPixmap(QPixmap pixmap);
+    void resize(int width, int height);
 
    protected:
     // Обрабатываем нажатие левой кнопки мыши

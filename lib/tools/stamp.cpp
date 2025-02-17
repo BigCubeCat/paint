@@ -66,9 +66,7 @@ void Stamp::star(QPainter* painter) {
     auto& state = StateSingleton::instance();
     auto config = state.polygonConfig();
 
-    // Угол между соседними вершинами звезды (всего вершин 2*points)
     double angle_step = M_PI / config.n;
-    // Начинаем с вершины вверху (угол -90°)
     double start_angle = config.angle * (M_PI / 180);
 
     // Коэффициент для внутреннего радиуса.
