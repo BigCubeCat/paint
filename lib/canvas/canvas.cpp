@@ -78,7 +78,9 @@ void Canvas::setPixmap(QPixmap pixmap) {
 }
 
 void Canvas::reset() {
+    qDebug() << "RESET";
     m_pixmap.fill(Qt::white);
+    update();
 }
 
 void Canvas::resize(int width, int height) {

@@ -201,7 +201,7 @@
     <string>Stamp figure</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S</string>
+    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionAbout">

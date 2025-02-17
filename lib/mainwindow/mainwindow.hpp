@@ -38,6 +38,7 @@ class MainWindow : public QMainWindow {
     ParamWidget m_param_widget;
 
     std::string m_filename;
+    std::string m_format = "PNG";
 
     void askFilename();
 };

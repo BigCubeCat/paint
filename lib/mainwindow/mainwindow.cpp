@@ -80,11 +80,14 @@ void MainWindow::useStamp() {
 }
 
 void MainWindow::askFilename() {
+    QString selected_filter;
     QString file_name = QFileDialog::getSaveFileName(
         //
         this, tr("Save Image"), QDir::homePath(),
-        tr("PNG Files (*.png);; JPG file (*.jpg);; BMP (*.bmp)"), nullptr,
-        QFileDialog::DontUseNativeDialog);
+        tr("png file (*.png);; jpg file (*.jpg);; bmp file (*.bmp)"),
+        &selected_filter, QFileDialog::DontUseNativeDialog);
+    qDebug() << selected_filter << "|";
+    m_format = selected_filter.split(" ").at(0).toStdString();
     if (!file_name.isEmpty()) {
         m_filename = file_name.toStdString();
     }
@@ -95,8 +98,9 @@ void MainWindow::saveImage() {
         askFilename();
     }
     if (m_filename != "") {
-        if (!m_canvas.pixmap().save(QString::fromStdString(m_filename),
-                                    "PNG")) {  // TODO(bigcubecat): формат
+        auto pixmap = m_canvas.pixmap();
+        QString filename = QString::fromStdString(m_filename + "." + m_format);
+        if (!pixmap.save(filename, m_format.c_str())) {
             QMessageBox::warning(this, tr("Save Error"),
                                  tr("Failed to save the image."));
         }
