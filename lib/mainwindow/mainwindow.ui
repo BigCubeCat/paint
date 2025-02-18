@@ -40,7 +40,7 @@
          <x>0</x>
          <y>0</y>
          <width>780</width>
-         <height>486</height>
+         <height>493</height>
         </rect>
        </property>
       </widget>
@@ -54,7 +54,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -157,6 +157,12 @@
    </property>
   </action>
   <action name="actionLine">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normalon>:/assets/assets/icons/line.png</normalon>
@@ -173,6 +179,9 @@
    </property>
   </action>
   <action name="actionFill">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normalon>:/assets/assets/icons/fill.png</normalon>
@@ -189,6 +198,9 @@
    </property>
   </action>
   <action name="actionStamp">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normalon>:/assets/assets/icons/shape.png</normalon>

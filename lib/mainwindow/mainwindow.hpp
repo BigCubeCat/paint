@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QActionGroup>
 #include <QMainWindow>
 
 #include "../canvas/canvas.hpp"
@@ -26,12 +27,16 @@ class MainWindow : public QMainWindow {
 
     void resizeCanvas();
 
+    void aboutSlots();
+
    public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow() override;
 
    private:
     Ui::MainWindow* m_ui;
+
+    QActionGroup m_tool_group;
 
     Canvas m_canvas;
     ColorPicker m_colorpicker;

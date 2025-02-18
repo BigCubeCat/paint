@@ -7,14 +7,13 @@
 
 void Fill::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     m_point = event->pos();
-}
-
-void Fill::paintEvent(QPixmap& canvas, [[maybe_unused]] QPainter* painter,
-                      [[maybe_unused]] QPaintEvent* event) {
     auto& state = StateSingleton::instance();
     span(canvas, state.color());
 }
-
+//
+// void Fill::paintEvent(QPixmap& canvas, [[maybe_unused]] QPainter* painter,
+//                       [[maybe_unused]] QPaintEvent* event) {}
+//
 void Fill::span(QPixmap& canvas, const QColor& color) {
     QImage img = canvas.toImage();
     QColor old_color = img.pixelColor(m_point);

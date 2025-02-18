@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="assets">
+    <file>assets/ava.png</file>
     <file>assets/icons/star.png</file>
     <file>assets/icons/shape.png</file>
     <file>assets/icons/save_as.png</file>

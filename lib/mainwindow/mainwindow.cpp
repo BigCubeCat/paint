@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QSpinBox>
 
+#include "../about/about.hpp"
 #include "../common/state.hpp"
 #include "../polygon/polygondialog.hpp"
 #include "../resizedialog/resizedialog.hpp"
@@ -16,7 +17,8 @@ MainWindow::MainWindow(QWidget* parent)
       m_ui(new Ui::MainWindow),
       m_canvas(Canvas(this)),
       m_colorpicker(ColorPicker(this)),
-      m_param_widget(ParamWidget(this)) {
+      m_param_widget(ParamWidget(this)),
+      m_tool_group(this) {
     m_ui->setupUi(this);
 
     m_ui->scrollArea->setWidget(&m_canvas);
@@ -50,6 +52,13 @@ MainWindow::MainWindow(QWidget* parent)
     connect(m_ui->actionResize, &QAction::triggered, this,
             &MainWindow::resizeCanvas);
     connect(m_ui->actionReset, &QAction::triggered, &m_canvas, &Canvas::reset);
+
+    connect(m_ui->actionAbout, &QAction::triggered, this,
+            &MainWindow::aboutSlots);
+
+    m_tool_group.addAction(m_ui->actionLine);
+    m_tool_group.addAction(m_ui->actionFill);
+    m_tool_group.addAction(m_ui->actionStamp);
 }
 
 MainWindow::~MainWindow() {
@@ -138,4 +147,9 @@ void MainWindow::resizeCanvas() {
         state.setGeometry(rd.width(), rd.height());
         m_canvas.resize(state.width(), state.height());
     }
+}
+
+void MainWindow::aboutSlots() {
+    auto about_dialog = AboutDialog(this);
+    about_dialog.exec();
 }

@@ -16,5 +16,5 @@ class Fill : public ITool {
     void onMouseUp(QPixmap& canvas, QMouseEvent* event) override {}
 
     void paintEvent(QPixmap& canvas, QPainter* painter,
-                    QPaintEvent* event) override;
+                    QPaintEvent* event) override {}
 };
