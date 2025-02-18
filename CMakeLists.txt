@@ -3,6 +3,14 @@ project(icg_paint LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt6_add_resources(RESOURCES resources.qrc)
