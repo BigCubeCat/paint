@@ -4,17 +4,16 @@
 #include <stack>
 
 #include "../common/state.hpp"
+#include "../common/utils.hpp"
 
 void Fill::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     m_point = event->pos();
     auto& state = StateSingleton::instance();
     span(canvas, state.color());
 }
-//
-// void Fill::paintEvent(QPixmap& canvas, [[maybe_unused]] QPainter* painter,
-//                       [[maybe_unused]] QPaintEvent* event) {}
-//
+
 void Fill::span(QPixmap& canvas, const QColor& color) {
+    auto start = current_unixtime;
     QImage img = canvas.toImage();
     QColor old_color = img.pixelColor(m_point);
     if (old_color == color)
@@ -55,4 +54,6 @@ void Fill::span(QPixmap& canvas, const QColor& color) {
     }
 
     canvas.convertFromImage(img);
+    auto finish = current_unixtime;
+    qDebug() << "time spent: " << finish - start;
 }

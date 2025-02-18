@@ -18,6 +18,8 @@ add_library(${PROJECT_NAME} STATIC
   e_tool.hpp
   state.hpp
   state.cpp
+  utils.hpp
+  polygon_config.hpp
 )
 
 target_link_libraries(${PROJECT_NAME} 
