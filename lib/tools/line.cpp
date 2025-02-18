@@ -49,10 +49,8 @@ void Line::drawLineBresenham(QPainter* painter, int x1, int y1, int x2,
     int err = dx + dy;
     int e2;
 
-    while (true) {
+    while (x1 != x2 || y1 != y2) {
         painter->drawPoint(x1, y1);
-        if (x1 == x2 && y1 == y2)
-            break;
         e2 = 2 * err;
         if (e2 >= dy) {
             err += dy;

@@ -7,12 +7,12 @@
 ParamWidget::ParamWidget(QWidget* parent)
     : QWidget(parent),
       m_ui(new Ui::ParamWidget),
-      m_line(this),
-      m_fill(this),
-      m_label(this),
       m_line_icon("assets/icons/line.png"),
       m_fill_icon("assets/icons/fill.png"),
-      m_poly_icon("assets/icons/shape.png") {
+      m_poly_icon("assets/icons/shape.png"),
+      m_label(this),
+      m_line(this),
+      m_fill(this) {
     m_ui->setupUi(this);
 
     m_label.setPixmap(m_line_icon.pixmap(32, 32));

@@ -28,6 +28,7 @@ class MainWindow : public QMainWindow {
     void resizeCanvas();
 
     void aboutSlots();
+    void helpSlots();
 
    public:
     explicit MainWindow(QWidget* parent = nullptr);

@@ -9,16 +9,17 @@
 
 #include "../about/about.hpp"
 #include "../common/state.hpp"
+#include "../help/help.hpp"
 #include "../polygon/polygondialog.hpp"
 #include "../resizedialog/resizedialog.hpp"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent),
       m_ui(new Ui::MainWindow),
+      m_tool_group(this),
       m_canvas(Canvas(this)),
       m_colorpicker(ColorPicker(this)),
-      m_param_widget(ParamWidget(this)),
-      m_tool_group(this) {
+      m_param_widget(ParamWidget(this)) {
     m_ui->setupUi(this);
 
     m_ui->scrollArea->setWidget(&m_canvas);
@@ -55,6 +56,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(m_ui->actionAbout, &QAction::triggered, this,
             &MainWindow::aboutSlots);
+
+    connect(m_ui->actionHelp, &QAction::triggered, this,
+            &MainWindow::helpSlots);
 
     m_tool_group.addAction(m_ui->actionLine);
     m_tool_group.addAction(m_ui->actionFill);
@@ -152,4 +156,9 @@ void MainWindow::resizeCanvas() {
 void MainWindow::aboutSlots() {
     auto about_dialog = AboutDialog(this);
     about_dialog.exec();
+}
+
+void MainWindow::helpSlots() {
+    auto help_dialog = HelpDialog(this);
+    help_dialog.exec();
 }

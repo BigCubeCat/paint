@@ -38,6 +38,7 @@ target_link_libraries(icg_paint
         paramwidget
         resizedialog
         polygondialog
+        help_lib
         about
     PUBLIC
         common_lib
@@ -69,5 +70,6 @@ add_subdirectory(lib/paramwidget)
 add_subdirectory(lib/resizedialog)
 add_subdirectory(lib/polygon)
 add_subdirectory(lib/about)
+add_subdirectory(lib/help)
 
 
