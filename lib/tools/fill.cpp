@@ -32,6 +32,12 @@ void Fill::span(QPixmap& canvas, const QColor& color) {
 
         int x = p.x();
         int y = p.y();
+
+        if (x < 0 || x >= img.width() || y < 0 || y >= img.height())
+            continue;
+        if (img.pixelColor(x, y) !=
+            old_color)  // тот случай когда уже покрасили, спан создавать не нужно
+            continue;
         /// такой цикл с разделением на 2 потка позволил ускорить алгоритм примерно на 10%
         /// для большой области
         int coords[2] = {x, x};

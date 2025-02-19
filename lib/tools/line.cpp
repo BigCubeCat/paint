@@ -34,14 +34,13 @@ void Line::paintEvent([[maybe_unused]] QPixmap& canvas, QPainter* painter,
         auto& state = StateSingleton::instance();
         QPen pen(state.color(), state.toolWidth(), Qt::DashLine);
         painter->setPen(pen);
-        // TODO(bigcubecat): реализовать алгоритм
         drawLineBresenham(painter, m_start.x(), m_start.y(), m_current.x(),
                           m_current.y());
     }
 }
 
-void Line::drawLineBresenham(QPainter* painter, int x1, int y1, int x2,
-                             int y2) {
+void Line::drawLineBresenham(QPainter* painter,  //
+                             int x1, int y1, int x2, int y2) {
     int dx = abs(x2 - x1);
     int sx = x1 < x2 ? 1 : -1;
     int dy = -abs(y2 - y1);
