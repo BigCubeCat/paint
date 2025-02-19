@@ -11,6 +11,7 @@ PUBLIC
 PRIVATE
     common_lib
     lineconfig
+    spinslider
 )
 
 target_include_directories(polygondialog PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

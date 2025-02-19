@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../common/polygon_config.hpp"
+#include "../spinslider/spinslider.hpp"
 
 #include <QDialog>
 
@@ -21,6 +22,11 @@ class PolygonDialog : public QDialog {
    private:
     Ui::PolygonDialog* m_ui;
     PolygonConfig m_config;
+
+    SpinSlider m_vert;
+    SpinSlider m_width;
+    SpinSlider m_radius;
+    SpinSlider m_angle;
 
    public slots:
     void widthChanged(int w);

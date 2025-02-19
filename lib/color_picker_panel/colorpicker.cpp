@@ -11,14 +11,11 @@
 
 #include "../common/state.hpp"
 
-const int kUsualSize = 20;
-const int kSelectedSize = 30;
-
 ColorPicker::ColorPicker(QWidget* parent)
     : QWidget(parent),
       m_ui(new Ui::ColorPicker),
-      m_current_color_id(0),
-      m_buttons(9) {
+      m_buttons(9),
+      m_current_color_id(0) {
     m_ui->setupUi(this);
     m_buttons[0] = m_ui->btnBlack;
     m_buttons[1] = m_ui->btnRed;
@@ -81,7 +78,7 @@ void ColorPicker::styleButton(QPushButton* btn, const QColor& color) {
 
 void ColorPicker::highlight() {
     auto state_color = StateSingleton::instance().color();
-    for (int i = 0; i < m_colors.size(); ++i) {
+    for (size_t i = 0; i < m_colors.size(); ++i) {
         ColorPicker::styleButton(m_buttons[i], m_colors[i]);
     }
     ColorPicker::styleButton(m_ui->btnCustom, state_color);

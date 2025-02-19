@@ -5,8 +5,8 @@
 */
 struct PolygonConfig {
     bool isStar;
-    int n;
-    int width;
-    int radius;
-    int angle;
+    int n = 5;
+    int width = 3;
+    int radius = 128;
+    int angle = 0;
 };

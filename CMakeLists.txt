@@ -4,7 +4,7 @@ project(icg_paint LANGUAGES CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
@@ -40,6 +40,7 @@ target_link_libraries(icg_paint
         polygondialog
         help_lib
         about
+        spinslider
     PUBLIC
         common_lib
         tools_lib
@@ -71,5 +72,6 @@ add_subdirectory(lib/resizedialog)
 add_subdirectory(lib/polygon)
 add_subdirectory(lib/about)
 add_subdirectory(lib/help)
+add_subdirectory(lib/spinslider)
 
 

@@ -16,7 +16,8 @@ void Stamp::onMouseUp(QPixmap& canvas, [[maybe_unused]] QMouseEvent* event) {
     }
 }
 
-void Stamp::onMouseMove(QPixmap& canvas, [[maybe_unused]] QMouseEvent* event) {}
+void Stamp::onMouseMove([[maybe_unused]] QPixmap& canvas,
+                        [[maybe_unused]] QMouseEvent* event) {}
 
 void Stamp::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     m_drawing = true;
@@ -48,7 +49,7 @@ void Stamp::polygon(QPainter* painter) {
     auto& state = StateSingleton::instance();
     auto config = state.polygonConfig();
 
-    double start_angle = config.angle * (M_PI / 180);
+    double start_angle = config.angle * (M_PI / 180);  // перевод угла в радианы
     auto angle_step = 2 * M_PI / config.n;
     QPoint prev_point(m_point.x() + (config.radius * cos(start_angle)),
                       m_point.y() + (config.radius * sin(start_angle)));
