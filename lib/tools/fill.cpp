@@ -32,7 +32,8 @@ void Fill::span(QPixmap& canvas, const QColor& color) {
 
         int x = p.x();
         int y = p.y();
-        /// такой цикл с разделением на 2 потка позволил ускорить алгоритм примерно на 30%
+        /// такой цикл с разделением на 2 потка позволил ускорить алгоритм примерно на 10%
+        /// для большой области
         int coords[2] = {x, x};
         int dx[2] = {-1, 1};
 #pragma omp parallel for num_threads(2)
