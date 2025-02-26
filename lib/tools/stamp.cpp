@@ -2,6 +2,8 @@
 #include <qlogging.h>
 #include <QPainter>
 
+#include <cmath>
+
 #include "../common/state.hpp"
 
 void Stamp::onMouseUp(QPixmap& canvas, [[maybe_unused]] QMouseEvent* event) {

@@ -6,6 +6,21 @@
 #include "../common/state.hpp"
 #include "../common/utils.hpp"
 
+namespace {
+void scanSpan(const QImage& image, const QColor color, const QPoint& begin,
+              const QPoint& end, std::stack<QPoint>& stack) {
+    bool could_add_span = true;
+    for (QPoint i = begin; i != end; i.setX(i.x() + 1)) {
+        if (image.pixelColor(i) != color) {
+            could_add_span = true;
+        } else if (could_add_span) {
+            stack.push(i);
+            could_add_span = false;
+        }
+    }
+}
+};  // namespace
+
 void Fill::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
     m_point = event->pos();
     auto& state = StateSingleton::instance();
@@ -13,52 +28,30 @@ void Fill::onMouseDown([[maybe_unused]] QPixmap& canvas, QMouseEvent* event) {
 }
 
 void Fill::span(QPixmap& canvas, const QColor& color) {
-    auto start = current_unixtime;
     QImage img = canvas.toImage();
     QColor old_color = img.pixelColor(m_point);
     if (old_color == color)
         return;
-
     std::stack<QPoint> stack;
     stack.push(m_point);
-    int width = img.width();
-    int height = img.height();
-    int x_border = width - 1;
-    int y_border = height - 1;
-
     while (!stack.empty()) {
-        QPoint p = stack.top();
+        QPoint right = stack.top();
         stack.pop();
-
-        int x = p.x();
-        int y = p.y();
-
-        if (x < 0 || x >= img.width() || y < 0 || y >= img.height())
-            continue;
-        if (img.pixelColor(x, y) !=
-            old_color)  // тот случай когда уже покрасили, спан создавать не нужно
-            continue;
-        /// такой цикл с разделением на 2 потка позволил ускорить алгоритм примерно на 10%
-        /// для большой области
-        int coords[2] = {x, x};
-        int dx[2] = {-1, 1};
-#pragma omp parallel for num_threads(2)
-        for (int i = 0; i < 2; ++i) {
-            while (coords[i] > 0 && coords[i] < x_border &&
-                   img.pixelColor(coords[i] + dx[i], y) == old_color)
-                coords[i] += dx[i];
+        QPoint left = right + QPoint(-1, 0);
+        while (left.x() >= 0 && img.pixelColor(left) == color) {
+            img.setPixelColor(left, color);
+            left += QPoint(-1, 0);
         }
-
-        for (int i = coords[0]; i <= coords[1]; ++i) {
-            img.setPixelColor(i, y, color);
-            if (y > 0 && img.pixelColor(i, y - 1) == old_color)
-                stack.emplace(i, y - 1);
-            if (y < y_border && img.pixelColor(i, y + 1) == old_color)
-                stack.emplace(i, y + 1);
+        left += QPoint(1, 0);
+        while (right.x() < img.width() && img.pixelColor(right) == color) {
+            img.setPixelColor(right, color);
+            right = right + QPoint(1, 0);
         }
+        if (left.y() + 1 < img.height())
+            scanSpan(img, color, left + QPoint(0, 1), right + QPoint(0, 1),
+                     stack);
+        if (left.y() - 1 >= 0)
+            scanSpan(img, color, left + QPoint(0, -1), right + QPoint(0, -1),
+                     stack);
     }
-
-    canvas.convertFromImage(img);
-    auto finish = current_unixtime;
-    qDebug() << "time spent: " << (finish - start) / 1000000;
 }

@@ -6,6 +6,8 @@
 #include <QWidget>
 #include <utility>
 
+#include <QDebug>
+
 #include "../common/state.hpp"
 
 Canvas::Canvas(QWidget* parent) : QWidget(parent), m_pixmap(QPixmap(600, 400)) {
@@ -78,7 +80,6 @@ void Canvas::setPixmap(QPixmap pixmap) {
 }
 
 void Canvas::reset() {
-    qDebug() << "RESET";
     m_pixmap.fill(Qt::white);
     update();
 }

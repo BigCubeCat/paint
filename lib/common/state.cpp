@@ -4,6 +4,8 @@
 #include "../tools/line.hpp"
 #include "../tools/stamp.hpp"
 
+#include <QDebug>
+
 StateSingleton& StateSingleton::instance() {
     static StateSingleton inst;
     if (inst.tool() == nullptr) {
